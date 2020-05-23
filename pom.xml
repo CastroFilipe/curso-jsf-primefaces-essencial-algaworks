@@ -1,8 +1,98 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.filipe</groupId>
-  <artifactId>curso-jsf-primefaces-essencial-algaworks</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <name>curso-jsf-primefaces-essencial-algaworks</name>
-  <description>Curso de JSF e Primefaces</description>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.filipe</groupId>
+	<artifactId>curso-jsf-primefaces-essencial-algaworks</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>war</packaging>
+
+	<name>curso-jsf-primefaces-essencial-algaworks</name>
+	<description>Curso de JSF e Primefaces</description>
+
+	<properties>
+		<!-- propriedade que indica a versão do java. O valor poderá ser referenciado 
+			com ${java.version} -->
+		<java.version>1.8</java.version>
+		<!-- Propriedade informando ao maven que utilize utf-8 para o build e outras 
+			configurações. -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<!-- Dependência que implementa o JSF -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.4.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Dependência da biblioteca de componentes Primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>8.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api 
+			Dependência do Servlet, necessário para aplicações JSF. -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>4.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<!-- Dependência do hibernate VALIDATOR que contém a implementação da especificação 
+			JSR 380 Ou seja, a especificação Java Validation. Essa dependência é separada 
+			dos aspectos de persistência do hibernate, logo ela não contém o conjunto 
+			de persistência, apenas o de validação. -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.1.5.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager. -->
+		<!-- Dependência com a implementação do JPA para a persistência de dados. -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.4.16.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.12</version>
+			<scope>runtime</scope>
+		</dependency>
+
+	</dependencies>
+
+	<!-- Configurações do Maven para o Build da aplicação -->
+	<build>
+		<!-- O nome do arquivo de build final será o mesmo do nome do projeto -->
+		<finalName>${project.name}</finalName>
+		<plugins>
+			<!--Configuração do Plugin de compilação e sua versão. Também configura 
+				o maven para compilar utilizando versão 1.8 do java -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
