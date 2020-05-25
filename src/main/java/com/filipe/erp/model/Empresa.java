@@ -23,7 +23,7 @@ import javax.persistence.UniqueConstraint;
 @Table(name = "EMPRESA", uniqueConstraints = { 
 		@UniqueConstraint (columnNames = "ID_EMPRESA", name = "UK_ID_EMPRESA")
 })
-@SequenceGenerator(name = "SEQ_EMPRESA", sequenceName = "SQ_EMPRESA", allocationSize = 1)
+@SequenceGenerator(name = "SEQ_EMPRESA", sequenceName = "SQ_EMPRESA", allocationSize = 1, initialValue = 1)
 public class Empresa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -54,6 +54,21 @@ public class Empresa implements Serializable {
 	@JoinColumn(name = "ID_RAMO_ATIVIDADE", nullable = false, 
 	foreignKey = @ForeignKey(name = "FK_EMPRESA_RAMOATIVIDADE"))
 	private RamoAtividade ramoAtividade;
+	
+	public Empresa() {
+		super();
+	}
+
+	public Empresa(String nomeFantasia, String cnpj, String razaoSocial, Date dataFundacao, TipoEmpresaEnum tipoEmpresa,
+			RamoAtividade ramoAtividade) {
+		super();
+		this.nomeFantasia = nomeFantasia;
+		this.cnpj = cnpj;
+		this.razaoSocial = razaoSocial;
+		this.dataFundacao = dataFundacao;
+		this.tipoEmpresa = tipoEmpresa;
+		this.ramoAtividade = ramoAtividade;
+	}
 
 	public Long getId() {
 		return id;
@@ -93,6 +108,14 @@ public class Empresa implements Serializable {
 
 	public void setDataFundacao(Date dataFundacao) {
 		this.dataFundacao = dataFundacao;
+	}
+
+	public TipoEmpresaEnum getTipoEmpresa() {
+		return tipoEmpresa;
+	}
+
+	public void setTipoEmpresa(TipoEmpresaEnum tipoEmpresa) {
+		this.tipoEmpresa = tipoEmpresa;
 	}
 
 	public RamoAtividade getRamoAtividade() {
