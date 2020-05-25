@@ -22,7 +22,7 @@ public class RamoAtividade implements Serializable {
 	@Column(name = "ID_RAMO_ATIVIDADE")
 	private Long id;
 
-	@Column(name = "TX_DESCRICAO")
+	@Column(name = "TX_DESCRICAO", nullable = false, length = 80)
 	private String descricao;
 
 	public Long getId() {

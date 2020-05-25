@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,9 +17,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "EMPRESA")
+@Table(name = "EMPRESA", uniqueConstraints = { 
+		@UniqueConstraint (columnNames = "ID_EMPRESA", name = "UK_ID_EMPRESA")
+})
 @SequenceGenerator(name = "SEQ_EMPRESA", sequenceName = "SQ_EMPRESA", allocationSize = 1)
 public class Empresa implements Serializable {
 
@@ -26,27 +30,29 @@ public class Empresa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMPRESA")
+	@Column(name = "ID_EMPRESA")
 	private Long id;
 
-	@Column(name = "TX_NOME_FANTASIA")
+	@Column(name = "TX_NOME_FANTASIA", nullable = false, length = 80)
 	private String nomeFantasia;
 
-	@Column(name = "TX_CNPJ")
+	@Column(name = "TX_CNPJ", nullable = false, length = 18)
 	private String cnpj;
 
-	@Column(name = "TX_RAZAO_SOCIAL")
+	@Column(name = "TX_RAZAO_SOCIAL", nullable = false, length = 120)
 	private String razaoSocial;
 
 	@Column(name = "DH_FUNDACAO")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	private Date dataFundacao;
 
-	@Column(name = "EN_TIPO_EMPRESA")
+	@Column(name = "EN_TIPO_EMPRESA", nullable = false, length = 30)
 	@Enumerated(EnumType.STRING)
 	private TipoEmpresaEnum tipoEmpresa;
 
-	@ManyToOne()
-	@JoinColumn(name = "ID_RAMO_ATIVIDADE")
+	@ManyToOne
+	@JoinColumn(name = "ID_RAMO_ATIVIDADE", nullable = false, 
+	foreignKey = @ForeignKey(name = "FK_EMPRESA_RAMOATIVIDADE"))
 	private RamoAtividade ramoAtividade;
 
 	public Long getId() {
