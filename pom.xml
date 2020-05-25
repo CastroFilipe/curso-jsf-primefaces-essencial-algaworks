@@ -76,6 +76,19 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!-- Dependência que implementa a especificação CDI. CDI é a especificação 
+			que trata sobre injeção de dependências. A dependência Weld é uma das possíveis 
+			implementações do CDI -->
+		<!-- https://mvnrepository.com/artifact/org.jboss.weld.servlet/weld-servlet-core -->
+		<dependency>
+			<groupId>org.jboss.weld.servlet</groupId>
+			<artifactId>weld-servlet-core</artifactId>
+			<version>3.1.4.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<!-- Configurações do Maven para o Build da aplicação -->
