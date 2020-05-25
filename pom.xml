@@ -43,7 +43,8 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
-			<scope>provided</scope>
+			<scope>provided</scope><!-- irá compilar, porém não empacotará já que 
+				um servidor de aplicação web, como o tomcat, já forcene a dependência -->
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
@@ -58,14 +59,14 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager. -->
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 		<!-- Dependência com a implementação do JPA para a persistência de dados. -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
+			<artifactId>hibernate-core</artifactId>
 			<version>5.4.16.Final</version>
-			<scope>compile</scope>
 		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
