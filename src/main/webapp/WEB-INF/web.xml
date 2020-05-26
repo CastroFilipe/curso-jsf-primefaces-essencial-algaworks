@@ -6,6 +6,11 @@
 	version="4.0"> <!--o 4.0 indica a versão do descritor, compativel com a versão 4.0 do javax.servlet-api -->
 
 	<display-name>curso-jsf-primefaces-essencial-algaworks</display-name>
+	
+	<!-- indica qual a página inicial a ser carregada ao acessar localhost:8080 -->
+	<welcome-file-list>
+		<welcome-file>GestaoEmpresa.xhtml</welcome-file>
+	</welcome-file-list>
 
 	<!-- Configurações simples do servlet -->
 	
